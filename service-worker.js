@@ -1,4 +1,4 @@
-var cacheName = 'intervalTimer-v0.1.06';
+var cacheName = 'randomBeep-v0.0.01';
 
 var filesToCache = [
   './',
@@ -6,16 +6,14 @@ var filesToCache = [
   './js/main.js',
   './css/framework.min.css',  
   './img/icon.png',
+  './img/icon-48x48.png',
+  './img/icon-96x96.png',
   './img/icon-128x128.png',
   './img/icon-144x144.png',
   './img/icon-192x192.png',
-  './img/icon-48x48.png',
   './img/icon-512x512.png',
-  './img/icon-96x96.png',
   './sound/alert.ogg',
-  './sound/end.ogg',
-  './sound/gong.ogg',
-  './sound/gong2.ogg'
+  './sound/gong.ogg'
 ];
 
 self.addEventListener('install', function(e) {
@@ -33,7 +31,7 @@ self.addEventListener('activate', function(e) {
   e.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
-        if (key.startsWith('intervalTimer-')){
+        if (key.startsWith('randomBeep-')){
           if (key !== cacheName) {
             console.log('[ServiceWorker] Removing old cache', key);
             return caches.delete(key);

@@ -1,6 +1,6 @@
-<h3>Interval Timer</h3>
+<h3>Random Beep</h3>
 <hr/>
 
-Temporizador con cuenta atrás para controlar intervalos y lapsos de tiempo en tus entrenamientos
+Temporizador con cuenta atrás, durante la cuenta atrás suena una campana en un tiempo aleatoria.
 
-<a href="https://salvacam.github.io/intervalTimer" target="_blank">Interval Timer</a>
+<a href="https://salvacam.github.io/randomBeep" target="_blank">Random Beep</a>

@@ -1,7 +1,7 @@
 {
   "lang": "en",
-  "name": "Interval Timer",
-  "short_name": "intervalTime",
+  "name": "Ramdon Beep",
+  "short_name": "randomBeep",
   "icons": [{
         "src": "img/icon-48x48.png",
         "sizes": "48x48",

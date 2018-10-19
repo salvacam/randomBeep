@@ -19,6 +19,7 @@
 	}
 
 	.principal a#play,
+	.principal a#playRandom,
 	.principal a#pause,
 	.principal a#reset {
 		margin-top: 15px;
