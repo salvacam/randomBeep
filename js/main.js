@@ -32,6 +32,9 @@ var app = {
   	modalPause: document.getElementById('modalPause'),
   	modalReset: document.getElementById('modalReset'),
 
+  	numberBeepElement: document.getElementsByName('numberBeep'),
+  	numberBeep: 1,
+
   	playSound: function(srcSound){
 		app.audio.src = "./sound/" + srcSound + ".ogg";
 		app.audio.play();
@@ -66,10 +69,17 @@ var app = {
         		.then(function() {
           		//console.log('Service Worker Registered');
         	});
-    	}
+    	}    	
   	},
 
 	initChrono: function() {
+
+		for(var i = 0; i < app.numberBeepElement.length; i++){
+    		if(app.numberBeepElement[i].checked){
+        		app.numberBeep = app.numberBeepElement[i].value;
+    		}
+		}
+
 		setDiv.classList.add("hide");
 		chronoDiv.classList.remove("hide");
 
@@ -91,7 +101,13 @@ var app = {
 		app.interval = setInterval(function() {
 			if (!app.isPaused) {
 				if (timeBeep == 0) {
-					app.playSound('alert');
+	  				if (app.numberBeep == 1) {
+						app.playSound('alert');
+					} else {
+	  					let randomSound = Math.floor(Math.random() * app.numberBeep) + 1;
+	  					app.audio.src = "./sound/" + randomSound + ".mp3";
+						app.audio.play();
+	  				}
 					timeBeep = Math.floor(Math.random() * (app.maxValueInt - app.minValueInt + 1)) + app.minValueInt;
 				} else {
 					timeBeep -= 1;

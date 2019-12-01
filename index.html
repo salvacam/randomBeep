@@ -162,6 +162,9 @@
     			justify-content: space-between;
     			min-width: 100px;
 			}
+			.setDiv input {
+				margin-left: 20px;
+			}
 
 		div.clear {
 	  		height: 5px;
@@ -225,6 +228,19 @@
 				<a id="maxLess" class="lessBtn btn btn-sm navigatorConfig" data-type="max" tabindex="0">-</a>	
 				<span id="maxValue" class="value">0:10</span>
 				<a id="maxMore" class="moreBtn btn btn-sm navigatorConfig" data-type="max" tabindex="0">+</a>
+			</div>
+			<div class="clear"></div>
+			<div>
+				<p>Select a number of beep:</p>
+			  	<input type="radio" id="one" name="numberBeep" value="1" checked>
+			  	<label for="one">One</label>
+
+			  	<input type="radio" id="two" name="numberBeep" value="2">
+			  	<label for="two">Two</label>
+				
+				<input type="radio" id="three" name="numberBeep" value="3">
+				<label for="three">Three</label>
+
 			</div>
 			<div class="clear"></div>
 			<a id="play" class="btn btn-b btn-sm navigatorConfig" tabindex="0">Play</a>
