@@ -1,4 +1,4 @@
-var cacheName = 'randomBeep-v0.0.02';
+var cacheName = 'randomBeep-v0.0.03';
 
 var filesToCache = [
   './',
@@ -13,7 +13,10 @@ var filesToCache = [
   './img/icon-192x192.png',
   './img/icon-512x512.png',
   './sound/alert.ogg',
-  './sound/gong.ogg'
+  './sound/gong.ogg',
+  './sound/1.mp3',
+  './sound/2.mp3',
+  './sound/3.mp3'
 ];
 
 self.addEventListener('install', function(e) {
