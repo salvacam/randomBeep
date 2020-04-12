@@ -15,10 +15,10 @@ var app = {
   	workValueInt: 150,
 
   	minValue: document.getElementById('minValue'),
-  	minValueInt: 5,
+  	minValueInt: 2,
   	
   	maxValue: document.getElementById('maxValue'),
-  	maxValueInt: 10,
+  	maxValueInt: 4,
 
   	state: 1, // 1 -> config, 2 -> chrono
   	timeRest: document.getElementById('timeRest'),
@@ -198,15 +198,15 @@ var app = {
   				break;
 			case 'min':
 				app.minValueInt = parseInt(app.minValueInt) - 1;
-				if (parseInt(app.minValueInt) < 3) {
-					app.minValueInt = 3;
+				if (parseInt(app.minValueInt) < 2) {
+					app.minValueInt = 2;
 				}
 				app.minValue.innerText = app.formatTime(app.minValueInt);
   				break;
 			case 'max':
 				app.maxValueInt = parseInt(app.maxValueInt) - 1;
-				if (parseInt(app.maxValueInt) < 5) {
-					app.maxValueInt = 5;
+				if (parseInt(app.maxValueInt) < 4) {
+					app.maxValueInt = 4;
 				}
 				app.maxValue.innerText = app.formatTime(app.maxValueInt);
   				break;
@@ -242,15 +242,15 @@ var app = {
 	  				break;
 				case 'min':
 					app.minValueInt = parseInt(app.minValueInt) - 1;
-					if (parseInt(app.minValueInt) < 3) {
-						app.minValueInt = 3;
+					if (parseInt(app.minValueInt) < 2) {
+						app.minValueInt = 2;
 					}
 					app.minValue.innerText = app.formatTime(app.minValueInt);
 	  				break;
 				case 'max':
 					app.maxValueInt = parseInt(app.maxValueInt) - 1;
-					if (parseInt(app.maxValueInt) < 5) {
-						app.maxValueInt = 5;
+					if (parseInt(app.maxValueInt) < 4) {
+						app.maxValueInt = 4;
 					}
 					app.maxValue.innerText = app.formatTime(app.maxValueInt);
 	  				break;
@@ -295,8 +295,8 @@ var app = {
 			case 'min':
 				if (parseInt(app.minValueInt) < 9) {
 					app.minValueInt = parseInt(app.minValueInt) + 1;
-					if (parseInt(app.minValueInt) < 3) {
-						app.minValueInt = 3;
+					if (parseInt(app.minValueInt) < 2) {
+						app.minValueInt = 2;
 					}
 				}
 				app.minValue.innerText = app.formatTime(app.minValueInt);
@@ -304,8 +304,8 @@ var app = {
 			case 'max':
 				if (parseInt(app.maxValueInt) < 20) {
 					app.maxValueInt = parseInt(app.maxValueInt) + 1;
-					if (parseInt(app.maxValueInt) < 5) {
-						app.maxValueInt = 5;
+					if (parseInt(app.maxValueInt) < 4) {
+						app.maxValueInt = 4;
 					}
 				}
 				app.maxValue.innerText = app.formatTime(app.maxValueInt);
@@ -348,8 +348,8 @@ var app = {
 				case 'min':
 					if (parseInt(app.minValueInt) < 9) {
 						app.minValueInt = parseInt(app.minValueInt) + 1;
-						if (parseInt(app.minValueInt) < 3) {
-							app.minValueInt = 3;
+						if (parseInt(app.minValueInt) < 2) {
+							app.minValueInt = 2;
 						}
 					}
 					app.minValue.innerText = app.formatTime(app.minValueInt);
@@ -357,8 +357,8 @@ var app = {
 				case 'max':
 					if (parseInt(app.maxValueInt) < 20) {
 						app.maxValueInt = parseInt(app.maxValueInt) + 1;
-						if (parseInt(app.maxValueInt) < 5) {
-							app.maxValueInt = 5;
+						if (parseInt(app.maxValueInt) < 4) {
+							app.maxValueInt = 4;
 						}
 					}
 					app.maxValue.innerText = app.formatTime(app.maxValueInt);
