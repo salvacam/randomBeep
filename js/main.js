@@ -12,7 +12,7 @@ var app = {
   	chronoDiv: document.getElementById('chronoDiv'),
 
   	workValue: document.getElementById('workValue'),
-  	workValueInt: 150,
+  	workValueInt: 60,
 
   	minValue: document.getElementById('minValue'),
   	minValueInt: 2,
