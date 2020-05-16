@@ -162,9 +162,9 @@ var app = {
 		document.getElementById('okReset').addEventListener('click', () => {
 			app.modalReset.classList.add('hide');
 			document.getElementById('okReset').removeEventListener('click', ()=> {});
-			//borrar 	el tiempo
+			//borrar el tiempo trabajado
 			app.workTime = 0;
-			app.workTime.innerText = app.formatTime(app.workTime);
+			app.workTimeElement.innerText = app.formatTime(app.workTime);
 		});
 
 		document.getElementById('closeReset').addEventListener('click', () => {  
