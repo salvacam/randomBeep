@@ -8,11 +8,15 @@ var app = {
   	pause: document.getElementById('pause'),
   	reset: document.getElementById('reset'),
 
+  	resetWorkTimeElement: document.getElementById('resetWorkTime'),
+  	workTimeElement: document.getElementById('workTime'),
+  	workTime: 0,
+
   	setDiv: document.getElementById('setDiv'),
   	chronoDiv: document.getElementById('chronoDiv'),
 
   	workValue: document.getElementById('workValue'),
-  	workValueInt: 150,
+  	workValueInt: 60,
 
   	minValue: document.getElementById('minValue'),
   	minValueInt: 2,
@@ -44,6 +48,8 @@ var app = {
     	app.play.addEventListener('click', app.initChrono);
     	app.reset.addEventListener('click', app.resetChrono);
     	app.pause.addEventListener('click', app.pauseChrono);
+
+		app.resetWorkTimeElement.addEventListener('click', app.resetWorkTime);    	
 
     	let classnameLess = document.getElementsByClassName('lessBtn');
     	for (var i = 0; i < classnameLess.length; i++) {
@@ -113,13 +119,15 @@ var app = {
 					timeBeep -= 1;
 				}
 	  			if (restTime === 0) {
+					//Sumar el tiempo total trabajado
+					app.workTime += app.workValueInt;
 	  				clearInterval(app.interval);
 					app.playSound('gong');
 					clearInterval(app.interval);
-					restTime = 0;
+					restTime = 0;	
 					setTimeout(function () {
 						app.showConfig();
-					}, 7000);
+					}, 7000);									
 	  			} else {
 					restTime -=1;
 				}
@@ -148,6 +156,23 @@ var app = {
 		});		
 	},
 
+	resetWorkTime: function() {
+		app.modalReset.classList.remove('hide');
+
+		document.getElementById('okReset').addEventListener('click', () => {
+			app.modalReset.classList.add('hide');
+			document.getElementById('okReset').removeEventListener('click', ()=> {});
+			//borrar 	el tiempo
+			app.workTime = 0;
+			app.workTime.innerText = app.formatTime(app.workTime);
+		});
+
+		document.getElementById('closeReset').addEventListener('click', () => {  
+			app.modalReset.classList.add('hide');
+			document.getElementById('closeReset').removeEventListener('click', ()=> {});
+		});		
+	},
+
 	showConfig: function() {
 		 /* TODO refactorizar */
 		document.getElementsByTagName("html")[0].classList.remove('work');
@@ -158,6 +183,8 @@ var app = {
 		app.setDiv.classList.remove("hide");
 		app.chronoDiv.classList.add("hide");
 		app.state = 1;
+
+		app.workTimeElement.innerText = app.formatTime(app.workTime);
 	},
 
 	pauseChrono: function() {
