@@ -102,11 +102,13 @@ var app = {
 		app.timeRestInt = restTime;
 		app.timeRest.innerText = app.formatTime(app.timeRestInt);
 
-		timeBeep = Math.floor(Math.random() * (app.maxValueInt - app.minValueInt + 1)) + app.minValueInt;
+		if (app.numberBeep != 0) {
+			app.timeBeep = Math.floor(Math.random() * (app.maxValueInt - app.minValueInt + 1)) + app.minValueInt;
+		}
 
 		app.interval = setInterval(function() {
 			if (!app.isPaused) {
-				if (timeBeep == 0) {
+				if (app.numberBeep != 0 && app.timeBeep == 0) {
 	  				if (app.numberBeep == 1) {
 						app.playSound('alert');
 					} else {
@@ -114,9 +116,9 @@ var app = {
 	  					app.audio.src = "./sound/" + randomSound + ".mp3";
 						app.audio.play();
 	  				}
-					timeBeep = Math.floor(Math.random() * (app.maxValueInt - app.minValueInt + 1)) + app.minValueInt;
-				} else {
-					timeBeep -= 1;
+					app.timeBeep = Math.floor(Math.random() * (app.maxValueInt - app.minValueInt + 1)) + app.minValueInt;
+				} else if (app.numberBeep != 0) {
+					app.timeBeep -= 1;
 				}
 	  			if (restTime === 0) {
 					//Sumar el tiempo total trabajado

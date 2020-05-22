@@ -163,12 +163,22 @@
     			min-width: 100px;
 			}
 			.setDiv input {
-				margin-left: 35px;
+				margin-left: 25px;
     			margin-right: 10px;
 			}
 
 		div.clear {
 	  		height: 5px;
+		}
+
+		div.clearx2 {
+	  		height: 10px;
+		}
+		p {
+			margin: 0 auto;
+		}
+		.min-font{
+			font-size: 14px;
 		}
 
 		.hide {
@@ -230,9 +240,13 @@
 				<span id="maxValue" class="value">0:04</span>
 				<a id="maxMore" class="moreBtn btn btn-sm navigatorConfig" data-type="max" tabindex="0">+</a>
 			</div>
-			<div class="clear"></div>
+			<div class="clearx2"></div>
 			<div>
 				<p>Select a number of beep:</p>
+
+			  	<input type="radio" id="zero" name="numberBeep" value="0">
+			  	<label for="zero" class="min-font">No sound</label>
+
 			  	<input type="radio" id="one" name="numberBeep" value="1" checked>
 			  	<label for="one">1</label>
 
@@ -246,6 +260,7 @@
 			<div class="clear"></div>
 			<a id="play" class="btn btn-b btn-sm navigatorConfig" tabindex="0">Play</a>
 
+			<div class="clear"></div>
 			<div>
 				<span class="titleWork">Work time</span>
 				<span id="workTime" class="value">0:00</span>
