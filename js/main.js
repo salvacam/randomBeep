@@ -39,12 +39,16 @@ var app = {
   	numberBeepElement: document.getElementsByName('numberBeep'),
   	numberBeep: 1,
 
+	noSleepVideo: document.getElementById('noSleepVideo'),	
+
   	playSound: function(srcSound){
 		app.audio.src = "./sound/" + srcSound + ".ogg";
 		app.audio.play();
   	},
   
   	init: function() {
+		app.noSleepVideo.pause();
+
     	app.play.addEventListener('click', app.initChrono);
     	app.reset.addEventListener('click', app.resetChrono);
     	app.pause.addEventListener('click', app.pauseChrono);
@@ -79,6 +83,8 @@ var app = {
   	},
 
 	initChrono: function() {
+
+		app.noSleepVideo.play();
 
 		for(var i = 0; i < app.numberBeepElement.length; i++){
     		if(app.numberBeepElement[i].checked){
@@ -176,6 +182,9 @@ var app = {
 	},
 
 	showConfig: function() {
+
+		app.noSleepVideo.pause();
+
 		 /* TODO refactorizar */
 		document.getElementsByTagName("html")[0].classList.remove('work');
 		document.getElementsByClassName("jumbotron")[0].classList.remove('work');
