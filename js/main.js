@@ -60,8 +60,8 @@ var app = {
     		classnameLess[i].addEventListener('click', app.lessValue);
     		classnameLess[i].addEventListener('mousedown', app.lessValueCont);
     		classnameLess[i].addEventListener('touchstart', app.lessValueCont);
-    		classnameLess[i].addEventListener('mouseup', app.lessValueContEnd);
-    		classnameLess[i].addEventListener('touchend', app.lessValueContEnd);    		
+    		classnameLess[i].addEventListener('mouseup', app.contEnd);
+    		classnameLess[i].addEventListener('touchend', app.contEnd);    		
 		}
 
     	let classnameMore = document.getElementsByClassName('moreBtn');
@@ -69,8 +69,8 @@ var app = {
     		classnameMore[i].addEventListener('click', app.moreValue);
     		classnameMore[i].addEventListener('mousedown', app.moreValueCont);
     		classnameMore[i].addEventListener('touchstart', app.moreValueCont);
-    		classnameMore[i].addEventListener('mouseup', app.moreValueContEnd);
-    		classnameMore[i].addEventListener('touchend', app.moreValueContEnd);
+    		classnameMore[i].addEventListener('mouseup', app.contEnd);
+    		classnameMore[i].addEventListener('touchend', app.contEnd);
 		}
 
 	    if ('serviceWorker' in navigator) {
@@ -296,8 +296,10 @@ var app = {
 		}, 250);
 	},
 
-	lessValueContEnd: function() {
-		clearInterval(app.intervalButton);
+	contEnd: function() {
+		for (var i = 0; i <= app.intervalButton; i ++) {
+			clearInterval(i);
+		}
 	},
 
 	moreValue: function(type) {
@@ -351,7 +353,6 @@ var app = {
 		}
 	},
 
-
 	moreValueCont: function(type) {		
 		if (typeof type === "object"){
 			type = type.target.getAttribute('data-type');
@@ -403,10 +404,6 @@ var app = {
 					break;
 			}
 		}, 250);
-	},
-
-	moreValueContEnd: function(type) {
-		clearInterval(app.intervalButton);
 	},
 
   	formatTime: function(time) {
