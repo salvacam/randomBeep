@@ -38,6 +38,9 @@ var app = {
 
   	numberBeepElement: document.getElementsByName('numberBeep'),
   	numberBeep: 1,
+	
+	timeReset: 3000,
+	initTime: -3,
 
 	noSleepVideo: document.getElementById('noSleepVideo'),	
 
@@ -105,15 +108,28 @@ var app = {
 		/* TODO refactorizar */
 
 		let restTime = app.workValueInt;
+		let initTime = app.initTime;
+
 		app.timeRestInt = restTime;
-		app.timeRest.innerText = app.formatTime(app.timeRestInt);
+		app.timeRest.innerText = app.formatTime(app.initTime);
 
 		if (app.numberBeep != 0) {
 			app.timeBeep = Math.floor(Math.random() * (app.maxValueInt - app.minValueInt + 1)) + app.minValueInt;
 		}
-
+		
 		app.interval = setInterval(function() {
-			if (!app.isPaused) {
+			if (initTime < 0) {
+				initTime +=1;
+				app.timeRestInt = initTime;
+			}
+			app.timeRest.innerText = app.formatTime(app.timeRestInt);
+
+			if (initTime >= 0 && !app.isPaused) {
+				if (restTime == app.workValueInt) {
+					app.timeRestInt = restTime;
+					app.timeRest.innerText = app.formatTime(app.timeRestInt);				
+					app.playSound('gong');
+				}
 				if (app.numberBeep != 0 && app.timeBeep == 0) {
 	  				if (app.numberBeep == 1) {
 						app.playSound('alert');
@@ -135,12 +151,11 @@ var app = {
 					restTime = 0;	
 					setTimeout(function () {
 						app.showConfig();
-					}, 7000);									
+					}, app.timeReset);									
 	  			} else {
 					restTime -=1;
 				}
 				app.timeRestInt = restTime;
-				app.timeRest.innerText = app.formatTime(app.timeRestInt);
   			}
 		}, 1000);
 	},
@@ -407,11 +422,15 @@ var app = {
 	},
 
   	formatTime: function(time) {
-	  	let seg = time%60;
-		if (seg < 10) {
-			seg = "0" + seg;
-		}
-		let min = parseInt(time/60);
-	  	return min+":"+seg;
+  		if (time < 0) {
+  			return "-0:0" + Math.abs(time);
+  		} else {
+		  	let seg = time%60;
+			if (seg < 10) {
+				seg = "0" + seg;
+			}
+			let min = parseInt(time/60);
+		  	return min+":"+seg;
+	  	}
   	}
 };
