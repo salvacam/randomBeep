@@ -44,6 +44,12 @@ var app = {
 
 	noSleepVideo: document.getElementById('noSleepVideo'),	
 
+	intervalShow: null,
+	gongDiv: document.getElementById('gong'),
+	randomSound1Div: document.getElementById('randomSound1'),
+	randomSound2Div: document.getElementById('randomSound2'),
+	randomSound3Div: document.getElementById('randomSound3'),
+
   	playSound: function(srcSound){
 		app.audio.src = "./sound/" + srcSound + ".ogg";
 		app.audio.play();
@@ -133,9 +139,31 @@ var app = {
 				if (app.numberBeep != 0 && app.timeBeep == 0) {
 	  				if (app.numberBeep == 1) {
 						app.playSound('alert');
+						app.gongDiv.classList.remove('hide');
+						clearInterval(app.intervalShow);
+						app.intervalShow = setInterval( function() {
+							app.gongDiv.classList.add('hide');
+						}, 1000);
 					} else {
 	  					let randomSound = Math.floor(Math.random() * app.numberBeep) + 1;
 	  					app.audio.src = "./sound/" + randomSound + ".mp3";
+						switch (randomSound) {
+							case 1:
+								app.randomSound1Div.classList.remove('hide');
+  								break;
+							case 2:								
+								app.randomSound2Div.classList.remove('hide');
+  								break;
+							case 3:
+								app.randomSound3Div.classList.remove('hide');
+  								break;
+							}
+						clearInterval(app.intervalShow);
+						app.intervalShow = setInterval( function() {
+							app.randomSound1Div.classList.add('hide');
+							app.randomSound2Div.classList.add('hide');
+							app.randomSound3Div.classList.add('hide');
+						}, 1000);
 						app.audio.play();
 	  				}
 					app.timeBeep = Math.floor(Math.random() * (app.maxValueInt - app.minValueInt + 1)) + app.minValueInt;

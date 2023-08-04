@@ -182,8 +182,50 @@
 		}
 
 		.hide {
-	  		display: none;
+	  		display: none !important;
 		}
+
+		.goDiv {
+			display: flex;
+			justify-content: center;
+		}
+
+		.go {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 70px;
+			width: 100%;
+		    font-size: 30px; 
+		    background-color: #D3D3D3;
+		    color: #000000;
+			margin-top: 10px;
+			font-weight: bold;
+		}
+
+		.go1 {
+		    background-color: #D3D3D3;
+		    color: #000000;
+		}
+
+		.go2 {
+		    background-color: #808080;
+		    color: #FFFFFF;			
+		}
+
+		.go3 {
+		    background-color: #000000;
+		    color: #FFFFFF;			
+		}
+
+		@media (min-width: 320px) {
+			.go {
+				margin-top: 20px;
+				height: 90px;
+				font-size: 45px;
+			}			
+		}
+    
   	</style>
 
 	<link rel="stylesheet" href="css/framework.min.css">  
@@ -269,10 +311,19 @@
 		</div>
 
 		<div id="chronoDiv" class="chronoDiv hide">
-			<span id="timeRest">10</span>
+			<span id="timeRest"></span>
 			<div class="clear"></div>
 			<a id="pause" class="btn btn-a btn-sm navigatorChrono" tabindex="0">Pause</a>
 			<a id="reset" class="btn btn-c btn-sm navigatorChrono" tabindex="0">Reset</a> <!-- pause and confirm -->
+
+			<div class="clearx2"></div>
+			<div class="goDiv">				
+				<div id="gong" class="hide go goAlert">GO</div>
+				<div id="randomSound1" class="hide go go1">1</div>
+				<div id="randomSound2" class="hide go go2">2</div>
+				<div id="randomSound3" class="hide go go3">3</div>
+			</div>
+
 		</div>
 	</div>
   

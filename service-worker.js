@@ -1,4 +1,4 @@
-var cacheName = 'randomBeep-v0.0.11';
+var cacheName = 'randomBeep-v0.0.12';
 
 var filesToCache = [
   './',
